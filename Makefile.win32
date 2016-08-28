@@ -1,0 +1,24 @@
+RM = RD /S /Q
+
+#BOOST_PACKAGE = asserts\boost_1_57_0.7z
+BOOST_SRC = boost\boost_1_57_0
+
+
+.PHONY : all
+all: boost
+
+.PHONY : boost
+boost:
+	cmd /c boost_init.bat
+	cmd /c boost_init_success.bat
+
+.PHONY : clean
+clean: boost.clean
+
+.PHONY : boost.clean
+boost.clean:
+	cmd /c if exist "$(BOOST_SRC)" $(RM) "$(BOOST_SRC)"
+
+
+
+
